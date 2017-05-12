@@ -13,19 +13,19 @@ InOut::InOut() {
 
     // Thermal Signature Module -------------------//
     // Stealth LED's
-    this->stealthLEDRed = new Animator(this->_moduleBus, 0, 1);
-    this->stealthLEDGreen = new Animator(this->_moduleBus, 0, 2);
-    this->stealthSwitchLED = new Animator(this->_moduleBus, 0, 3, true);
+    this->stealthLEDRed = new Animator(this->_moduleBus, 0, 1); // Gray
+    this->stealthLEDGreen = new Animator(this->_moduleBus, 0, 2); // Brown
+    this->stealthSwitchLED = new Animator(this->_moduleBus, 0, 3, true); // Black
     this->stealthModeSwitch = false;
 
     // Auto HeatSink LED's
-    this->autoHeatSinkLEDRed = new Animator(this->_moduleBus, 0, 4);
-    this->autoHeatSinkLEDGreen = new Animator(this->_moduleBus, 0, 5);
-    this->autoHeatSinkSwitchLED = new Animator(this->_moduleBus, 0, 6, true);
+    this->autoHeatSinkLEDRed = new Animator(this->_moduleBus, 0, 4); // Red
+    this->autoHeatSinkLEDGreen = new Animator(this->_moduleBus, 0, 5); // Purple
+    this->autoHeatSinkSwitchLED = new Animator(this->_moduleBus, 0, 6, true); // White
     this->autoHeatSinkSwitch = false;
 
     // Auto HeatSink Binary counter LED's
-    this->autoHeatSinkStatus1LEDRed = new Animator(this->_moduleBus, 0, 7);
+    this->autoHeatSinkStatus1LEDRed = new Animator(this->_moduleBus, 0, 7); // Grey
     this->autoHeatSinkStatus1LEDGreen = new Animator(this->_moduleBus, 1, 1);
 
     this->autoHeatSinkStatus2LEDRed = new Animator(this->_moduleBus, 0, 7);
@@ -61,8 +61,8 @@ void InOut::clock() {
     this->autoHeatSinkStatus4LEDGreen->clock();
 
     // Get Input data
-    this->stealthModeSwitch = this->_moduleBus->getInput(0, 1);
-    this->autoHeatSinkSwitch = this->_moduleBus->getInput(0, 2);
+    this->stealthModeSwitch = this->_moduleBus->getInput(0, 1); // Black
+    this->autoHeatSinkSwitch = this->_moduleBus->getInput(0, 2); // Brown
 
     // Sub System Module --------------------------//
 

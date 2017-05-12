@@ -1,0 +1,2 @@
+Options: 
+CMake: 3.7.2@/Users/leothornton/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/172.1572.3/CLion 2017.2 EAP.app/Contents/bin/cmake/bin/cmake

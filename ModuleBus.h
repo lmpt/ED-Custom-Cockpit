@@ -30,6 +30,7 @@ private:
     bool _outputData[3][8];
     int _moduleCount;
     int _inputAngle;
+    int _moduleAngle;
 
     bool checkInput(int module, int inputNumber);
 };

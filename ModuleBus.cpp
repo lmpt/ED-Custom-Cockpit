@@ -14,6 +14,7 @@ ModuleBus::ModuleBus(int numberOfModules) {
     this->_clockPin = 12;
     this->_moduleCount = numberOfModules;
     this->_inputAngle = 0; // Value used to store witch Input (0 - 7) we are checking at this time
+    this->_moduleAngle = 0; // Value used to store witch Module we are checking at this time
 
     // Set pin modes
     pinMode(this->_latchPin, OUTPUT);
@@ -35,16 +36,19 @@ void ModuleBus::setOutput(int module, int outputNumber, bool value) {
 // Update out button cache (also sets output values to the values stored in the output cache)
 void ModuleBus::refreshBusCache() {
     // Loop through each module
-    for (int module = 0; module < this->_moduleCount; module++) {
-        // Loop through each input on module and update the data bus cache with it's state
-        this->_inputData[module][this->_inputAngle] = checkInput(module, this->_inputAngle);
-        // TO DO: Add software de-bounce here using the '_inputDeBounce' buffer
-    }
+    this->_inputData[_moduleAngle][this->_inputAngle] = checkInput(this->_moduleAngle, this->_inputAngle);
+    // TO DO: Add software de-bounce here using the '_inputDeBounce' buffer
 
     this->_inputAngle++; // Increment Input Angle so next time we refresh bus cache we will get the next button input
     if (this->_inputAngle >= 8) {
         this->_inputAngle = 0;
+        this->_moduleAngle++;
+        if (this->_moduleAngle >= this->_moduleCount) {
+          this->_moduleAngle = 0;
+        }
     }
+
+    
 }
 
 // Set all Input, Input de-bounce and output data to false / 0
